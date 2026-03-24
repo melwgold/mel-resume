@@ -5,44 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mel Wong | Product Designer</title>
     <link rel="stylesheet" href="./src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body x-data="{ x: 0, y: 0, isHovering: false }" 
+<body x-data="{ x: 0, y: 0 }" 
       @mousemove="x = ($event.clientX / window.innerWidth - 0.5) * 30; 
                   y = ($event.clientY / window.innerHeight - 0.5) * 30"
-      class="bg-[#F5F5F7] text-black font-sans overflow-hidden select-none">
+      class="overflow-hidden select-none">
 
-    <div class="fixed inset-0 z-50 pointer-events-none opacity-[0.04] mix-blend-multiply"
-         style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E');">
-    </div>
+    <div class="vibe-grain"></div>
 
     <main class="relative z-10 min-h-screen flex flex-col justify-between p-8 md:p-16">
         
-        <nav class="flex justify-between items-start uppercase text-[10px] font-bold tracking-[0.3em]">
-            <span class="magnetic">Mel Wong</span>
-            <span class="text-right">Product Designer<br/>Portfolio '26</span>
+        <nav class="flex justify-between items-start">
+            <span class="label-mono text-black opacity-100 font-bold">Mel Wong</span>
+            <span class="label-mono text-right">Product Designer<br/>Portfolio</span>
         </nav>
 
         <header>
-            <h1 :style="`transform: translate3d(${x}px, ${y}px, 0)`"
-                class="text-[15vw] leading-[0.8] font-black uppercase tracking-tighter transition-transform duration-75 ease-out">
+            <h1 :style="`transform: translate3d(${x}px, ${y}px, 0)`" class="hero-title">
                 Mel<br/>Wong
             </h1>
             <p class="text-sm mt-8 max-w-xs font-medium opacity-50 uppercase tracking-tight">
-                Specializing in high-fidelity interaction and minimalist brutalist aesthetics.
+                I apply a systems-thinking lens to experimentation at scale, bridging the gap between owning business metrics and delivering high-craft user experiences.
             </p>
         </header>
 
         <footer class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-black/10 pt-8">
-            <section class="space-y-1 uppercase text-[10px] font-bold tracking-wider">
-                <p class="opacity-30 mb-2">Experience</p>
-                <div>Apple / Design</div>
-                <div>Linear / Product</div>
+            <section class="space-y-1">
+                <p class="label-mono mb-2">Experience</p>
+                <div class="font-bold text-xs uppercase italic">Instagram / San Francisco Bay Area / Jul 2022 — Present</div>
+                <div class="font-bold text-xs uppercase italic">Spotify / New York, NY / Aug 2019 — Jul 2022</div>
+                <div class="font-bold text-xs uppercase italic">Betterment / New York, NY / Aug 2018 — Aug 2019</div>
+                <div class="font-bold text-xs uppercase italic">MongoDB / New York, NY / Jan 2017 — Aug 2018</div>
             </section>
             
-            <div class="flex justify-end gap-8 text-xs font-black uppercase underline underline-offset-4">
-                <a href="#" class="hover:opacity-50 transition-opacity">Resume</a>
-                <a href="#" class="hover:opacity-50 transition-opacity">LinkedIn</a>
+            <div class="flex justify-end gap-8 text-xs font-black uppercase underline underline-offset-8 font-sans">
+                <p class="label-mono mb-2">Email me at melwgold[at]gmail.com</p>
+                <a href="https://www.linkedin.com/in/itsmelwong/" class="hover:opacity-50 transition-opacity">LinkedIn</a>
             </div>
         </footer>
     </main>
