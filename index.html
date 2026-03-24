@@ -15,14 +15,13 @@
 <body x-data="{ x: 0, y: 0 }" 
       @mousemove="x = ($event.clientX / window.innerWidth - 0.5) * 25; 
                   y = ($event.clientY / window.innerHeight - 0.5) * 25">
-
+    <div class="ambient-glow"></div>
     <div class="vibe-grain"></div>
 
     <main class="relative z-10 flex flex-col justify-between min-h-screen p-6 md:p-12 lg:p-16">
         
         <nav class="flex justify-between items-start w-full">
-            <span class="label-mono !opacity-100 font-bold">Mel Wong</span>
-            <span class="label-mono text-right">Product Designer<br/>Portfolio 2026</span>
+            <span class="label-mono text-right">Product Design</span>
         </nav>
 
         <header class="max-w-4xl">
@@ -35,7 +34,7 @@
             </p>
         </header>
 
-       <footer class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end border-t border-black/10 dark:border-white/10 pt-10">
+        <footer class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end border-t border-black/10 pt-10">
             <section class="md:col-span-8 space-y-2">
                 <p class="label-mono mb-4">Selected Experience</p>
                 <div class="exp-row"><b>Instagram</b> / SF Bay Area / 2022 — Present</div>
@@ -47,12 +46,7 @@
             <div class="md:col-span-4 flex flex-col items-start md:items-end gap-4">
                 <p class="label-mono">melwgold[at]gmail.com</p>
                 <div class="flex gap-6 text-[11px] font-bold uppercase tracking-tight font-sans">
-                    <a href="/resume.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      class="hover:opacity-40 transition-opacity underline underline-offset-4">
-                      Resume
-                    </a>
+                    <a href="/resume.pdf" target="_blank" class="hover:opacity-40 transition-opacity underline underline-offset-4">Resume</a>
                     <a href="https://linkedin.com/in/itsmelwong/" target="_blank" class="hover:opacity-40 transition-opacity underline underline-offset-4">LinkedIn</a>
                 </div>
             </div>

@@ -4,51 +4,74 @@
   --font-sans: "Inter", ui-sans-serif, system-ui;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   
-  /* Light Mode Palette */
-  --color-neutral-glass: #FCFAF1;
+  --color-neutral-glass: #FBFBFD;
   --color-ink: #1D1D1F;
-
-  /* Dark Mode Palette */
   --color-night-glass: #0A0A0B;
   --color-paper: #E4E4E6;
+
+  --color-ambient-lavender: #CAA9FF;
+  --color-ambient-yellow: #BBE1FF;
+  --color-ambient-neutral: #FBFBFD;
 }
 
 @layer base {
   html {
-    /* Smooth transition when system theme changes */
     @apply antialiased transition-colors duration-700 selection:bg-black selection:text-white;
     font-family: var(--font-sans);
     background-color: var(--color-neutral-glass);
     color: var(--color-ink);
   }
 
-  /* Dark Mode Media Query */
   @media (prefers-color-scheme: dark) {
     html {
       background-color: var(--color-night-glass);
       color: var(--color-paper);
-    }
-    /* Invert selection color for dark mode */
-    html {
       @apply selection:bg-white selection:text-black;
     }
   }
 
   body {
-    @apply min-h-screen overflow-hidden select-none;
+    @apply min-h-screen overflow-x-hidden select-none;
   }
 }
 
 @layer components {
+  .ambient-glow {
+    @apply fixed inset-0 -z-10 pointer-events-none;
+    background: radial-gradient(
+      circle at 50% 50%,
+      var(--color-ambient-yellow) 0%,
+      var(--color-ambient-lavender) 30%,
+      var(--color-neutral-glass) 70%
+    );
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: drift 60s infinite alternate ease-in-out;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ambient-glow {
+      opacity: 0.15;
+      filter: blur(120px);
+      background: radial-gradient(circle at 50% 50%, #2D243F 0%, #0A0A0B 70%);
+    }
+  }
+
+  @keyframes drift {
+    0% { transform: scale(1) translate(0%, 0%); }
+    33% { transform: scale(1.2) translate(5%, -15%); }
+    66% { transform: scale(1.1) translate(-5%, 15%); }
+    100% { transform: scale(1.3) translate(-200%, 200%); }
+  }
+
   .vibe-grain {
     @apply fixed inset-0 pointer-events-none z-[99];
-    /* Multiply for light backgrounds, Screen for dark backgrounds */
-    @apply opacity-[0.02] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.05];
+    @apply opacity-[0.01] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.0.5];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   .hero-title {
-    @apply text-[15vw] leading-[0.85] font-black uppercase tracking-tighter font-sans;
+    @apply text-[20vw] md:text-[15vw] leading-[0.85] font-black uppercase tracking-tighter font-sans;
     will-change: transform;
   }
 
@@ -60,7 +83,6 @@
     @apply text-[11px] font-medium opacity-40 leading-relaxed transition-colors;
   }
 
-  /* This ensures the bold text in experience rows stays readable in both modes */
   .exp-row b {
     @apply text-current font-bold opacity-100;
   }
