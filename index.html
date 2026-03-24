@@ -2,56 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Mel Wong — Product Designer</title>
     
     <link rel="stylesheet" href="/src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body x-data="{ x: 0, y: 0 }" 
-      @mousemove="x = ($event.clientX / window.innerWidth - 0.5) * 25; 
-                  y = ($event.clientY / window.innerHeight - 0.5) * 25">
+<body>
     <div class="ambient-glow"></div>
     <div class="vibe-grain"></div>
 
-    <main class="relative z-10 flex flex-col justify-between min-h-screen p-6 md:p-12 lg:p-16">
+    <main class="relative z-10 flex flex-col min-h-[100dvh] p-6 md:p-12 lg:p-16">
         
-        <nav class="flex justify-between items-start w-full">
-            <span class="label-mono text-right">Product Design</span>
+        <nav class="flex justify-between items-start w-full mb-12 md:mb-32">
+            <span class="label-mono !opacity-100 font-bold">Mel Wong</span>
+            <span class="label-mono text-right">Product Designer<br/>Portfolio 2026</span>
         </nav>
 
-        <header class="max-w-4xl">
-            <h1 :style="`transform: translate3d(${x}px, ${y}px, 0)`" class="hero-title">
+        <header class="max-w-4xl flex-grow">
+            <h1 class="hero-title">
                 Mel<br/>Wong
             </h1>
-            <p class="mt-10 text-base md:text-lg leading-snug max-w-lg font-medium italic opacity-80">
+            <p class="mt-6 md:mt-10 text-base md:text-lg leading-snug max-w-lg font-medium italic opacity-80">
                 I specialize in bridging the gap between high-craft design and massive scale, 
                 building products that feel human, even when they reach billions.
             </p>
         </header>
 
-        <footer class="grid grid-cols-1 md:grid-cols-12 gap-10 items-end border-t border-black/10 pt-10">
-            <section class="md:col-span-8 space-y-2">
-                <p class="label-mono mb-4">Selected Experience</p>
-                <div class="exp-row"><b>Instagram</b> / SF Bay Area / 2022 — Present</div>
-                <div class="exp-row"><b>Spotify</b> / New York / 2019 — 2022</div>
-                <div class="exp-row"><b>Betterment</b> / New York / 2018 — 2019</div>
-                <div class="exp-row"><b>MongoDB</b> / New York / 2017 — 2018</div>
+        <footer class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end border-t border-black/10 dark:border-white/10 pt-8 mt-12">
+            <section class="space-y-1">
+                <p class="label-mono mb-2">Experience</p>
+                <div class="exp-row"><b>Instagram</b> / SF / 2022 — Present</div>
+                <div class="exp-row"><b>Spotify</b> / NY / 2019 — 2022</div>
+                <div class="exp-row"><b>Betterment</b> / NY / 2018 — 2019</div>
+                <div class="exp-row"><b>MongoDB</b> / NY / 2017 — 2018</div>
             </section>
             
-            <div class="md:col-span-4 flex flex-col items-start md:items-end gap-4">
-                <p class="label-mono">melwgold[at]gmail.com</p>
-                <div class="flex gap-6 text-[11px] font-bold uppercase tracking-tight font-sans">
-                    <a href="/resume.pdf" target="_blank" class="hover:opacity-40 transition-opacity underline underline-offset-4">Resume</a>
-                    <a href="https://linkedin.com/in/itsmelwong/" target="_blank" class="hover:opacity-40 transition-opacity underline underline-offset-4">LinkedIn</a>
+            <div class="flex flex-col md:items-end gap-3">
+                <p class="label-mono lowercase opacity-60">melwgold@gmail.com</p>
+                <div class="flex gap-6 text-[10px] font-bold uppercase tracking-tight">
+                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:opacity-40 transition-opacity underline underline-offset-4">Resume</a>
+                    <a href="https://linkedin.com/in/itsmelwong/" target="_blank" rel="noopener noreferrer" class="hover:opacity-40 transition-opacity underline underline-offset-4">LinkedIn</a>
                 </div>
             </div>
         </footer>
     </main>
-
 </body>
 </html>
