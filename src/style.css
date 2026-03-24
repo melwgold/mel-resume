@@ -3,31 +3,65 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  /* Light Mode Palette */
+  --color-neutral-glass: #FCFAF1;
+  --color-ink: #1D1D1F;
+
+  /* Dark Mode Palette */
+  --color-night-glass: #0A0A0B;
+  --color-paper: #E4E4E6;
 }
 
 @layer base {
   html {
+    /* Smooth transition when system theme changes */
+    @apply antialiased transition-colors duration-700 selection:bg-black selection:text-white;
     font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.02em;
-    @apply bg-[#F5F5F7] text-black;
+    background-color: var(--color-neutral-glass);
+    color: var(--color-ink);
+  }
+
+  /* Dark Mode Media Query */
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: var(--color-night-glass);
+      color: var(--color-paper);
+    }
+    /* Invert selection color for dark mode */
+    html {
+      @apply selection:bg-white selection:text-black;
+    }
+  }
+
+  body {
+    @apply min-h-screen overflow-hidden select-none;
   }
 }
 
 @layer components {
-  /* The Apple-style Film Grain */
   .vibe-grain {
-    @apply fixed inset-0 z-50 pointer-events-none opacity-[0.04] mix-blend-multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    @apply fixed inset-0 pointer-events-none z-[99];
+    /* Multiply for light backgrounds, Screen for dark backgrounds */
+    @apply opacity-[0.02] mix-blend-multiply dark:mix-blend-screen dark:opacity-[0.05];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* The Large Title Styling */
   .hero-title {
-    @apply text-[15vw] leading-[0.8] font-black uppercase tracking-tighter transition-transform duration-75 ease-out font-sans;
+    @apply text-[15vw] leading-[0.85] font-black uppercase tracking-tighter font-sans;
+    will-change: transform;
   }
 
-  /* Technical Labels */
   .label-mono {
-    @apply font-mono text-[10px] uppercase tracking-[0.3em] opacity-40;
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] opacity-40 transition-opacity duration-300;
+  }
+
+  .exp-row {
+    @apply text-[11px] font-medium opacity-40 leading-relaxed transition-colors;
+  }
+
+  /* This ensures the bold text in experience rows stays readable in both modes */
+  .exp-row b {
+    @apply text-current font-bold opacity-100;
   }
 }
