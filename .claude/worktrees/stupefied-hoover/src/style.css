@@ -76,7 +76,7 @@
 
   .hero-title {
     /* Optimized mobile size and leading */
-    @apply text-[12vw] md:text-[12vw] leading-[0.9] font-black uppercase tracking-tight font-sans mb-8 md:mb-16;
+    @apply text-[18vw] md:text-[15vw] leading-[0.9] font-black uppercase tracking-tight font-sans mb-4 md:mb-8;
   }
 
   .label-mono {
